@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/junhwong/vue-ui">
-        <img width="200" src="https://raw.githubusercontent.com/junhwong/vue-ui/master/logo.fw.png">
+        <img style="max-width: 200px" src="https://raw.githubusercontent.com/junhwong/vue-ui/master/logo.fw.png">
     </a>
 </p>
 # vue-ui
