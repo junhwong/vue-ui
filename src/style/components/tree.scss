@@ -23,17 +23,21 @@
 
       li {
         flex: 1;
-
-        &.toggle,
-        &.icon,
-        &.tools {
+        font-size: 1.4rem;
+        &.x-tree-node-toggle,
+        &.x-tree-node-icon,
+        &.x-tree-node-tools {
           flex: 0 0 18px;
           color: #999;
         }
 
-        &.tools {
+        &.x-tree-node-tools {
           flex: 0 0 24px;
         }
+
+        // &.x-tree-node-icon{
+        //   font-size: 1.4rem;
+        // }
       }
 
       &:hover {
@@ -66,4 +70,8 @@
     }
 
   }
+}
+
+.x-loading{
+  padding: 5px 15px;
 }

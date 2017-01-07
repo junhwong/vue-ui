@@ -1,7 +1,7 @@
 
 <script>
   export default {
-    name: 'button',
+    name: 'x-button',
     props: {
       href: String,
       icon: String,
@@ -40,12 +40,17 @@
 
       console.log(el)
       return el
+    },
+    methods: {
+      handleEvent (type, event) {
+        this.$emit(type, event)
+      }
     }
   }
 </script>
 <template>
-  <ui-wrapper>
-    <a v-if="type == 'link'" class="btn" href="href"><slot></slot></a>
-    <button v-else class="btn"><slot></slot></button>
-  </ui-wrapper>
+  <x-wrapper>
+    <a v-if="type == 'link'" class="btn" href="href" @click="handleEvent('click', $event)"><slot></slot></a>
+    <button v-else class="btn" @click="handleEvent('click', $event)"><slot></slot></button>
+  </w-wrapper>
 </template>

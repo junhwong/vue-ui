@@ -2,10 +2,11 @@
   // const $ = window.nQuery
 
   export default {
-    name: 'vui-tree-node',
-    props: ['node', 'level', 'contextmenu'],
+    name: 'x-tree-node',
+    props: ['data', 'level', 'contextmenu'],
     data () {
       return {
+        nameFiled: 'title',
         levels: 1,
         isExpand: false
       }
@@ -13,7 +14,7 @@
     computed: {
       hasChildren: {
         get () {
-          return this.node.children && this.node.children.length > 0
+          return this.data.hasChildren || (this.data.children && this.data.children.length > 0)
         }
       },
       expand: {
@@ -26,9 +27,9 @@
       }
     },
     methods: {
-      toggle () {
-        console.log(this.expand)
+      toggle (event) {
         this.expand = !this.expand
+        this.$emit('toggle', event, this)
       },
       nodeNameClick (event, node) {
         this.$emit('name-click', event, node || this)
@@ -38,24 +39,26 @@
       }
     },
     mounted () {
-      this.$contextmenu.bind(this.$refs.contextmenu, this.contextmenu, this.fireContextMenuClick, this.node)
+      // if (!this.$contextmenu) return
+      this.$contextmenu.bind(this.$refs.contextmenu, this.contextmenu, this.fireContextMenuClick, this.data)
     },
     destroyed () {
+      if (!this.$contextmenu) return
       this.$contextmenu.unbind(this.$refs.contextmenu)
     }
   }
 </script>
 <template>
-  <div class="ui-tree-node">
-    <ul class="ui-tree-node-title" :style="{ paddingLeft : (level * 20 + 15) + 'px' }">
+  <div class="x-tree-node">
+    <ul class="x-tree-node-title" :style="{ paddingLeft : (level * 20 + 15) + 'px' }">
       <!--http://www.treejs.cn/v3/demo.php#_201-->
-      <li class="toggle"><i class="iconfont" v-show="hasChildren" @click="toggle" :class="[expand ? 'icon-arrowdown' : 'icon-arrowright']"></i></li>
-      <li class="icon"><i class="iconfont icon-folder"></i></li>
-      <li @click="nodeNameClick" ref="contextmenu"><span class="name">{{node.name}}</span></li>
+      <li class="x-tree-node-toggle"><i class="iconfont" v-show="hasChildren" @click="toggle" :class="[expand ? 'icon-arrowdown' : 'icon-arrowright']"></i></li>
+      <li class="x-tree-node-icon"><i class="iconfont icon-folder"></i></li>
+      <li @click="nodeNameClick" ref="contextmenu"><span class="name">{{data[nameFiled]}}</span></li>
       <!--<li class="tools">
         <i class="iconfont icon-arrowdown"></i>
       </li>-->
     </ul>
-    <tree-node v-for="child in node.children" :node="child" :level="level+1" v-show="expand" @name-click="nodeNameClick" :contextmenu="contextmenu" @contextmenu-click="fireContextMenuClick"></tree-node>
+    <x-tree-node v-for="child in data.children" :data="child" :level="level+1" v-show="expand" @name-click="nodeNameClick" :contextmenu="contextmenu" @contextmenu-click="fireContextMenuClick"/>
   </div>
 </template>

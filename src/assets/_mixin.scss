@@ -1,0 +1,9 @@
+@mixin test {
+  color: red;
+}
+
+@mixin flexbox{
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}

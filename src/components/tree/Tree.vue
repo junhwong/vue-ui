@@ -3,15 +3,14 @@
 <script>
 import TreeNode from './TreeNode'
 export default {
-  name: 'vui-tree',
+  name: 'x-tree',
   components: {
     TreeNode
   },
   props: ['data', 'contextmenu'],
   methods: {
-    toggle () {
-      console.log(this.expand)
-      this.expand = !this.expand
+    toggle (event, node) {
+      this.$emit('toggle', event, node)
     },
     nodeNameClick (event, node) {
       this.$emit('node-click', event, node)
@@ -24,7 +23,8 @@ export default {
 </script>
 
 <template>
-  <div class="ui-tree">
-    <tree-node v-for="node in data" :node="node" :level="0" @name-click="nodeNameClick" :contextmenu="contextmenu"></tree-node>
+  <div class="x-tree">
+    <!--<div class="x-loading">loading...</div>-->
+    <tree-node v-for="node in data" :data="node" :level="0" @name-click="nodeNameClick" @toggle="toggle" :contextmenu="contextmenu"/>
   </div>
 </template>

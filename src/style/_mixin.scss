@@ -1,0 +1,17 @@
+@mixin flexbox($direction: row) {
+  align-items: stretch;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: $direction;
+  // flex-flow: row;
+
+  & > * {
+    flex: 0 0 auto;
+  }
+}
+
+// For electron client-window dragable
+@mixin cwin-draggable {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}

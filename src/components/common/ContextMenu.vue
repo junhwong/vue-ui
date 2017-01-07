@@ -5,14 +5,16 @@ function on (el, eventType, handler) {
   }
   el.addEventListener(eventType, handler)
 }
+
 function un (el, eventType, handler) {
   if (!el || !el.removeEventListener) {
     return
   }
   el.removeEventListener(eventType, handler)
 }
+
 export default {
-  name: 'vui-contextmenu',
+  name: 'x-contextmenu',
   data () {
     return {
       menus: [],
@@ -74,7 +76,7 @@ export default {
 }
 </script>
 <template>
-  <ul class="vui-contextmenu" ref="contextmenu" v-show="display" :style="{top: top+'px', left: left+'px'}">
+  <ul class="x-contextmenu" ref="contextmenu" v-show="display" :style="{top: top+'px', left: left+'px'}">
     <li v-for="item in menus" v-html="item.title!='-'?item.title:''" :class="{'sec':item.title=='-'}" @click="_handleClick($event, item, handler, context)"></li>
   </ul>
 </template>

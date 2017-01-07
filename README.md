@@ -1,5 +1,5 @@
 # vue-ui
-
+![X-View](https://raw.githubusercontent.com/junhwong/vue-ui/master/logo.fw.png)
 > A Vue.js project
 
 ## Build Setup

@@ -1,0 +1,54 @@
+.window {
+  @include flexbox($direction: column);
+  height: 100%;
+  width: 100%;
+  background-color: $primary-color;
+  border: 1px solid $primary-dark-color;
+  border-radius: 4px;
+  //skin
+  // border-color: rgba(0, 147, 202, .8);
+  // box-shadow: 0px 0px 4px rgba(119, 218, 225, .4);
+
+  &-body {
+    flex: 1;
+  }
+
+  &-toolbar {
+    // & > * {
+    .nav-item {
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      vertical-align: middle;
+      min-width: 32px;
+      padding: 10px 10px;
+
+      &:hover {
+        background: rgba(255, 255, 255, .4);
+      }
+
+      .iconfont {
+        font-size: 1.2rem;
+      }
+    }
+
+    &-close.nav-item:hover {
+      background: $accent-color;
+    }
+
+    &-minimize.nav-item {
+      .iconfont {
+        font-size: 1.4rem;
+        position: absolute;
+        margin-left: -.45rem;
+        margin-top: -3px;
+      }
+    }
+
+    .nav-brand {
+      @extend .nav-item;
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+}

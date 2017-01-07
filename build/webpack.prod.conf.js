@@ -17,9 +17,13 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].js'), // .[chunkhash]
-    chunkFilename: utils.assetsPath('js/[id].js') // .[chunkhash]
+    // filename: utils.assetsPath('js/[name].js'), // .[chunkhash]
+    // chunkFilename: utils.assetsPath('js/[id].js') // .[chunkhash]
+    libraryTarget: 'umd',
+    library: '[name]',
+    filename: '[name].js'
   },
+  externals: {'vue': 'Vue'},
   vue: {
     loaders: utils.cssLoaders({
       sourceMap: config.build.productionSourceMap,

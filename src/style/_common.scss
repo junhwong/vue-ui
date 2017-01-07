@@ -1,0 +1,29 @@
+html {
+  font-size: 62.5%;
+}
+
+// http://www.zhangxinxu.com/wordpress/2016/11/css-unicode-range-character-font-face/
+@font-face {
+  font-family: BASE;
+  src: local('Helvetica Neue'), local('Helvetica'), local('PingFang SC'), local('Hiragino Sans GB'), local('Microsoft Yahei'), local('微软雅黑'), local('Arial'), local('sans-serif');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+body {
+  background: transparent;
+  font-family: BASE;
+  color: #333;
+}
