@@ -10,15 +10,18 @@
     &.active {
       background: #eaf0fb;
     }
-    .nav > *{
+
+    .nav > * {
       padding: 0;
     }
-    &-heading{
-      .nav-brand{
+
+    &-heading {
+      .nav-brand {
         padding: 5px 0;
       }
     }
-    &-text{
+
+    &-text {
       //color: #82828c;
       font-size: 1.2rem;
       line-height: 1.8rem;
@@ -27,38 +30,12 @@
       text-overflow: ellipsis;
       padding-top: 5px;
     }
-    &-footer{
+
+    &-footer {
       color: #ababab;
       font-size: 1.2rem;
     }
-
-
   }
 }
 
-.scrollview{
-  height: 650px;
-  background: red;
-  overflow: hidden;
-  &-content{
-    position: relative;
-    width: auto;
-    height: auto;
-    background: white;
-  }
 
-  &-bar{
-    // position: absolute;
-    top:80px;
-    left: 80px;
-    width: 8px;
-    height: 0;
-    opacity: .2;
-    background: #000;
-    border-radius: 5px;
-    &-drag{
-      opacity: .6;
-      // background: red;
-    }
-  }
-}
