@@ -1,7 +1,8 @@
-
 <script>
+  import Wrapper from '../wrapper'
   export default {
-    name: 'x-button',
+    name: 'btn',
+    components: {Wrapper},
     props: {
       href: String,
       icon: String,
@@ -49,8 +50,8 @@
   }
 </script>
 <template>
-  <x-wrapper>
+  <wrapper>
     <a v-if="type == 'link'" class="btn" href="href" @click="handleEvent('click', $event)"><slot></slot></a>
     <button v-else class="btn" @click="handleEvent('click', $event)"><slot></slot></button>
-  </w-wrapper>
+  </wrapper>
 </template>

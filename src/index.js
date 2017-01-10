@@ -4,26 +4,29 @@ import common from './components/common'
 import Tree from './components/tree'
 import Modal from './components/modal'
 import Button from './components/button/Button'
-import Text from './components/form/text'
+import Edit from './components/form/Edit'
 import Dropdown from './components/form/dropdown'
 import Combo from './components/form/combo'
 import Wrapper from './components/wrapper'
 import Window from './components/view/Window'
 import SlidePanel from './components/view/SlidePanel'
 import ScrollView from './components/view/ScrollView'
-
+import Menu from './components/nav/Menu'
+import Icon from './components/basic/Icon'
 const Components = {
   common,
+  Icon,
   Wrapper,
   Tree,
   Modal,
   Button,
-  Text,
+  Edit,
   Combo,
   Dropdown,
   Window,
   SlidePanel,
-  ScrollView
+  ScrollView,
+  Menu
 }
 
 Components.install = Vue => {

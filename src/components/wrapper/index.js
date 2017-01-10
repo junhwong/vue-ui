@@ -3,7 +3,7 @@ const getTag = elem => {
   return (elem && ['DIV', 'P', 'UL', 'DL'].indexOf(elem.tag)) ? elem.tag : 'DIV'
 }
 export default {
-  name: 'x-wrapper',
+  name: 'wrapper',
   props: {
     'root': {
       type: Boolean,

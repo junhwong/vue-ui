@@ -2,7 +2,7 @@
   // const $ = window.nQuery
 
   export default {
-    name: 'x-tree-node',
+    name: 'tree-node',
     props: ['data', 'level', 'contextmenu'],
     data () {
       return {
@@ -49,16 +49,16 @@
   }
 </script>
 <template>
-  <div class="x-tree-node">
-    <ul class="x-tree-node-title" :style="{ paddingLeft : (level * 20 + 15) + 'px' }">
+  <div class="tree-node">
+    <ul class="tree-node-title" :style="{ paddingLeft : (level * 20 + 15) + 'px' }">
       <!--http://www.treejs.cn/v3/demo.php#_201-->
-      <li class="x-tree-node-toggle"><i class="iconfont" v-show="hasChildren" @click="toggle" :class="[expand ? 'icon-arrowdown' : 'icon-arrowright']"></i></li>
-      <li class="x-tree-node-icon"><i class="iconfont icon-folder"></i></li>
+      <li class="tree-node-toggle"><i class="iconfont" v-show="hasChildren" @click="toggle" :class="[expand ? 'icon-arrowdown' : 'icon-arrowright']"></i></li>
+      <li class="tree-node-icon"><i class="iconfont icon-folder"></i></li>
       <li @click="nodeNameClick" ref="contextmenu"><span class="name">{{data[nameFiled]}}</span></li>
       <!--<li class="tools">
         <i class="iconfont icon-arrowdown"></i>
       </li>-->
     </ul>
-    <x-tree-node v-for="child in data.children" :data="child" :level="level+1" v-show="expand" @name-click="nodeNameClick" :contextmenu="contextmenu" @contextmenu-click="fireContextMenuClick"/>
+    <tree-node v-for="child in data.children" :data="child" :level="level+1" v-show="expand" @name-click="nodeNameClick" :contextmenu="contextmenu" @contextmenu-click="fireContextMenuClick"/>
   </div>
 </template>

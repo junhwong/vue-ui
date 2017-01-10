@@ -3,7 +3,7 @@
 <script>
 import TreeNode from './TreeNode'
 export default {
-  name: 'x-tree',
+  name: 'tree',
   components: {
     TreeNode
   },
@@ -23,8 +23,7 @@ export default {
 </script>
 
 <template>
-  <div class="x-tree">
-    <!--<div class="x-loading">loading...</div>-->
+  <div class="tree">
     <tree-node v-for="node in data" :data="node" :level="0" @name-click="nodeNameClick" @toggle="toggle" :contextmenu="contextmenu"/>
   </div>
 </template>

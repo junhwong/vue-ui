@@ -1,7 +1,7 @@
 <script>
 // import Popover from '../popover'
 export default {
-  name: 'x-modal',
+  name: 'modal',
   components: {
     // Popover
   },

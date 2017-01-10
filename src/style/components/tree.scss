@@ -4,11 +4,11 @@
   margin: 0;
 }
 
-.x-tree {
+.tree {
   @extend .normal;
-  padding-top: 15px;
+  // padding-top: 15px;
 
-  .x-tree-node {
+  .tree-node {
     @extend .normal;
     /*display: flex;*/
     /*padding: 5px;*/
@@ -24,18 +24,18 @@
       li {
         flex: 1;
         font-size: 1.4rem;
-        &.x-tree-node-toggle,
-        &.x-tree-node-icon,
-        &.x-tree-node-tools {
+        &.tree-node-toggle,
+        &.tree-node-icon,
+        &.tree-node-tools {
           flex: 0 0 18px;
           color: #999;
         }
 
-        &.x-tree-node-tools {
+        &.tree-node-tools {
           flex: 0 0 24px;
         }
 
-        // &.x-tree-node-icon{
+        // &.tree-node-icon{
         //   font-size: 1.4rem;
         // }
       }
@@ -54,7 +54,7 @@
     height: auto;
     background-color: rgb(255,255,255);
     border: 1px solid rgb(186,186,186);
-    box-shadow: 1px 1px rgb(142,142,142);
+    boshadow: 1px 1px rgb(142,142,142);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -72,6 +72,6 @@
   }
 }
 
-.x-loading{
+.loading{
   padding: 5px 15px;
 }

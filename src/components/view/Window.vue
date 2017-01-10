@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'x-window',
+  name: 'window',
   props: {
     title: {
       type: String,
@@ -40,7 +40,6 @@ export default {
       win.webContents.openDevTools()
     }
   }
-
 }
 </script>
 

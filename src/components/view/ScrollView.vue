@@ -1,10 +1,49 @@
 <script>
+  // TODO:
+  // 1.横向滚动
+  // 2.touch 事件
+  // 3.鼠标滚轮事件
   export default {
     name: 'scroll-view',
     data () {
       return {
         currentY: 0,
-        contentY: 0
+        contentY: 0,
+        startDragY: false,
+        content: {
+          top: 0,
+          left: 0,
+          height: 0,
+          width: 0
+        },
+        container: {
+          top: 0,
+          left: 0,
+          height: 0,
+          width: 0
+        },
+        yBar: {
+          draging: false,
+          top: 0,
+          left: 0,
+          height: 0,
+          width: 0,
+          axis: 0,
+          min: 0,
+          max: 0,
+          distance: 0
+        },
+        xBar: {
+          draging: false,
+          top: 0,
+          left: 0,
+          height: 0,
+          width: 0,
+          axis: 0,
+          min: 0,
+          max: 0,
+          distance: 0
+        }
       }
     },
     methods: {
@@ -20,53 +59,90 @@
         bar.style.height = height + 'px'
       },
       initYBar () {
-
+        if (this.content.height <= this.container.height) return
+        this.yBar.height = Math.round(this.container.height / (this.content.height / this.container.height))
+        this.yBar.min = this.container.top
+        this.yBar.max = this.yBar.min + this.container.height - this.yBar.height
+        this.yBar.axis = this.content.height / this.container.height
+        this.yBar.top = this.yBar.min
+        this.yBar.left = this.content.width + this.content.left - this.yBar.width - 1
+        console.log('initYBar', this.yBar.height)
       },
       scrollY (value) {
-        value -= this.len
-        let diff = this.currentY - value
-        if (value < this.minY || (-diff) + this.currentY > this.maxY) {
+        value -= this.yBar.distance
+        let diff = this.yBar.top - value
+        if (value < this.yBar.min || (-diff) + this.yBar.top > this.yBar.max) {
           return
         }
-        this.currentY = value
-        this.contentY += Math.round(diff * this.axisY) // + this.len
+        this.yBar.top = value
+        this.content.top += Math.round(diff * this.yBar.axis) // + this.len
         // this.contentY = this.contentY >= 0 ? 0 : this.contentY // 修正top
         // https://github.com/powy1993/scroll/blob/master/scroll.js
       },
       drag (event) {
-        if (!this.startDrag) return
+        if (!this.yBar.draging) return
         this.scrollY(event.clientY)
+      },
+      onResize () {
+        if (!this.$el) return
+        let container = this.$el
+        let content = this.$refs.content
+        let yBar = this.$refs.bar
+
+        this.container.top = container.offsetTop
+        this.container.left = container.offsetLeft
+        this.container.width = container.clientWidth
+        this.container.height = container.clientHeight
+
+        this.content.top = this.container.top - content.offsetTop
+        this.content.left = content.offsetLeft
+        this.content.width = content.clientWidth
+        this.content.height = content.clientHeight
+
+        this.yBar.top = yBar.offsetTop
+        this.yBar.left = yBar.offsetLeft
+        this.yBar.width = yBar.clientWidth
+        this.yBar.height = yBar.clientHeight
+      },
+      clickYBar (e) {
+        document.body.style.userSelect = 'none' // 拖动的时候不选择任何其它元素
+        // user-select
+        this.yBar.draging = true
+        this.startY = e.clientY
+        this.yBar.distance = e.clientY - this.yBar.top // 初始位置与点击位置的距离
+      },
+      releaseDrag () {
+        this.yBar.draging = false
+        document.body.style.userSelect = ''
       }
     },
     mounted () {
-      let container = this.$el
-      let content = this.$refs.content
-      let bar = this.$refs.bar
-      bar.style.left = (content.clientWidth + content.offsetLeft - bar.clientWidth - 1) + 'px'
-      this.update(container.offsetTop, container.clientHeight, content.clientHeight, 0)
+      this.onResize()
+      this.initYBar()
 
-      bar.addEventListener('mousedown', e => {
-        document.body.style.userSelect = 'none'
-        // user-select
-        bar.setAttribute('class', 'popover scrollview-bar popover scrollview-bar-drag')
-        this.startDrag = true
-        this.startY = e.clientY
-
-        let len = this.startY - bar.offsetTop
-        this.len = len
-      })
-      document.addEventListener('mouseup', e => {
-        bar.setAttribute('class', 'popover scrollview-bar')
-        document.body.style.userSelect = ''
-        this.startDrag = false
-      })
+      this.$refs.bar.addEventListener('mousedown', this.clickYBar)
+      document.addEventListener('mouseup', this.releaseDrag)
       document.addEventListener('mousemove', this.drag)
+      window.addEventListener('resize', this.onResize)
+    },
+    destroyed () {
+      if (this.$refs) {
+        this.$refs.bar.removeEventListener('mousedown', this.clickYBar)
+      }
+      document.removeEventListener('mouseup', this.releaseDrag)
+      document.removeEventListener('mousemove', this.drag)
+      window.removeEventListener('resize', this.onResize)
     }
   }
 </script>
 <template>
   <div class="scrollview">
-    <div class="scrollview-content" ref="content" :style="{top: contentY + 'px'}"><slot></slot></div>
-    <div class="popover scrollview-bar" ref="bar" :style="{top: currentY + 'px'}"></div>
+    <!--:style="{transform: 'translateY('+ -contentY + 'px)'}"-->
+    <div class="scrollview-content" ref="content" :style="{top: content.top+'px'}"><slot></slot></div>
+    <div class="popover scrollview-bar" ref="bar" :style="{
+      top: yBar.top+'px',
+      left: yBar.left+'px',
+      height: yBar.height+'px'
+    }" :class="{'scrollview-bar-drag': this.yBar.draging}"></div>
   </div>
 </template>

@@ -1,6 +1,8 @@
 <script>
+  import Wrapper from '../wrapper'
   export default {
     name: 'x-combo',
+    components: {Wrapper},
     props: {
       value: {
         type: String,
@@ -45,6 +47,6 @@
       <input class="form-input" type="text" @input="handleInput" :value="value" />
       <div class="form-picker" @click="handleTrigger"><i class="iconfont icon-arrowdown"></i></div>
     </div>
-    <x-wrapper ref="popover" class="combobox-content" v-show="contentShow"><div>d</div></x-wrapper>
+    <wrapper ref="popover" class="combobox-content" v-show="contentShow"><div>d</div></wrapper>
   </div>
 </template>
