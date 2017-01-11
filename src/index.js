@@ -10,7 +10,7 @@ import Combo from './components/form/combo'
 import Wrapper from './components/wrapper'
 import Window from './components/view/Window'
 import SlidePanel from './components/view/SlidePanel'
-import ScrollView from './components/view/ScrollView'
+import ScrollPanel from './components/view/ScrollPanel'
 import Menu from './components/nav/Menu'
 import Icon from './components/basic/Icon'
 const Components = {
@@ -25,7 +25,7 @@ const Components = {
   Dropdown,
   Window,
   SlidePanel,
-  ScrollView,
+  ScrollPanel,
   Menu
 }
 

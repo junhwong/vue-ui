@@ -1,4 +1,4 @@
-.scrollview {
+.scroll-panel {
   // position: relative;
   height: 100%;
   // height: 650px;
@@ -11,18 +11,23 @@
     background: white;
   }
 
-  &-bar {
+  &-thumb {
     // position: absolute;
     // top: 80px;
     // left: 80px;
     width: 6px;
     height: 0;
-    opacity: .2;
+    opacity: 0;
     background: #000;
     border-radius: 12px;
 
     &:hover, &-drag {
       opacity: .4;
     }
+  }
+
+  &:hover .scroll-panel-thumb, .scroll-panel-thumb-drag{
+    opacity: .2;
+
   }
 }

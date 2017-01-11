@@ -3,8 +3,9 @@
   // 1.横向滚动
   // 2.touch 事件
   // 3.鼠标滚轮事件
+  // 4.BUG: 修正最小值与最大值
   export default {
-    name: 'scroll-view',
+    name: 'scroll-panel',
     data () {
       return {
         currentY: 0,
@@ -136,13 +137,13 @@
   }
 </script>
 <template>
-  <div class="scrollview">
+  <div class="scroll-panel">
     <!--:style="{transform: 'translateY('+ -contentY + 'px)'}"-->
-    <div class="scrollview-content" ref="content" :style="{top: content.top+'px'}"><slot></slot></div>
-    <div class="popover scrollview-bar" ref="bar" :style="{
+    <div class="scroll-panel-content" ref="content" :style="{top: content.top+'px'}"><slot></slot></div>
+    <div class="popover scroll-panel-thumb" ref="bar" :style="{
       top: yBar.top+'px',
       left: yBar.left+'px',
       height: yBar.height+'px'
-    }" :class="{'scrollview-bar-drag': this.yBar.draging}"></div>
+    }" :class="{'scroll-panel-thumb-drag': this.yBar.draging}"></div>
   </div>
 </template>

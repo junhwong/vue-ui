@@ -12,6 +12,39 @@ html {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-button {
+    height: 2px;
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: lighten(black, 60%);
+    border-radius: 4px;
+}
+
+// ::-webkit-scrollbar-thumb{
+//   display: none;
+// }
+
+// .view {
+//   &::-webkit-scrollbar-thumb{
+//     background-color: lighten(black, 100%);
+//   }
+//   &:hover::-webkit-scrollbar-thumb{
+//     background-color: lighten(black, 80%);
+//   }
+//   // &:hover{
+//   //   &::-webkit-scrollbar-thumb{
+//   //     background-color: lighten(black, 80%);
+//   //   }
+//   // }
+// }
+
 body,
 html {
   border: 0;
