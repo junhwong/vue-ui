@@ -4,6 +4,7 @@
   // 2.touch 事件
   // 3.鼠标滚轮事件
   // 4.BUG: 修正最小值与最大值
+  // 5.BUG: 在非chrom浏览器中height 100%不产生滚动条
   export default {
     name: 'scroll-panel',
     data () {
