@@ -1,5 +1,5 @@
 import ContextMenu from './ContextMenu'
-import Toast from './Toast'
+import Prompt from './Prompt'
 
 export default {
   install (Vue) {
@@ -16,13 +16,13 @@ export default {
 
     div = document.createElement('div')
     document.body.appendChild(div)
-    const toast = new Vue({
+    const prompt = new Vue({
       el: div,
-      components: { Toast },
-      template: '<toast/>'
+      components: { Prompt },
+      template: '<prompt/>'
     })
-    Object.defineProperty(Vue.prototype, '$toast', {
-      get () { return toast.$children[0] }
+    Object.defineProperty(Vue.prototype, '$prompt', {
+      get () { return prompt.$children[0] }
     })
   }
 }

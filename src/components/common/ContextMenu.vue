@@ -76,7 +76,7 @@ export default {
 }
 </script>
 <template>
-  <ul class="x-contextmenu" ref="contextmenu" v-show="display" :style="{top: top+'px', left: left+'px'}">
+  <ul class="contextmenu" ref="contextmenu" v-show="display" :style="{top: top+'px', left: left+'px'}">
     <li v-for="item in menus" v-html="item.title!='-'?item.title:''" :class="{'sec':item.title=='-'}" @click="_handleClick($event, item, handler, context)"></li>
   </ul>
 </template>

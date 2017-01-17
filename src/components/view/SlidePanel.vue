@@ -55,10 +55,10 @@
   }
 </script>
 <template>
-  <div class="slide-panel">
+  <aside class="slide-panel">
     <slot></slot>
     <div class="popover" ref="popover" :style="{top: top+'px', left: left+'px', width: 'auto', minWidth: width+'px', height: height+'px', visibility: show ? 'visible' : 'hidden'}">
       <slot name="item"></slot>
     </div>
-  </div>
+  </aside>
 </template>

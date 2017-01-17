@@ -50,7 +50,7 @@
 </script>
 <template>
   <div class="tree-node">
-    <ul class="tree-node-title" :style="{ paddingLeft : (level * 20 + 15) + 'px' }">
+    <ul class="tree-node-title" :style="{ paddingLeft : (level * 20 + 5) + 'px' }">
       <!--http://www.treejs.cn/v3/demo.php#_201-->
       <li class="tree-node-toggle"><i class="iconfont" v-show="hasChildren" @click="toggle" :class="[expand ? 'icon-arrowdown' : 'icon-arrowright']"></i></li>
       <li class="tree-node-icon"><i class="iconfont icon-folder"></i></li>

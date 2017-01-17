@@ -1,4 +1,8 @@
 <script>
+  //图标库：
+  //      - http://fontawesome.io/
+  //      - http://www.iconfont.cn/ 默认
+
   const startsWith = (s, prefix) => {
     return s.slice(0, prefix.length) === prefix
   }

@@ -50,7 +50,11 @@ export default {
         stack[stack.length - 1].zindex = 1000
       }
     },
-    close () {
+    close () { // 废弃
+      this.is_shown = false
+      this._updatezIndex()
+    },
+    hide () {
       this.is_shown = false
       this._updatezIndex()
     },

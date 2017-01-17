@@ -44,20 +44,20 @@ export default {
 </script>
 
 <template>
-  <div class="window">
+  <section class="window">
     <slot name="header">
-    <div class="window-header">
-      <ul class="nav window-toolbar">
-        <li class="nav-brand">{{title}}</li>
-        <li class="nav-autospace"></li>
-        <li @click="setting" class="nav-item"><i class="iconfont icon-win-setting"></i></li>
-        <li @click="minimize" class="nav-item window-toolbar-minimize"><i class="iconfont icon-win_minimize"></i></li>
-        <li @click="maximize" class="nav-item"><i class="iconfont icon-win_maximize"></i></li>
-        <li @click="close" class="nav-item window-toolbar-close" v-if="closable" title="关闭"><i class="iconfont icon-close"></i></li>
-      </ul>
-    </div>
+      <header class="window-header">
+        <ul class="nav window-toolbar">
+          <li class="nav-brand">{{title}}</li>
+          <li class="nav-autospace"></li>
+          <li @click="setting" class="nav-item"><i class="iconfont icon-win-setting"></i></li>
+          <li @click="minimize" class="nav-item window-toolbar-minimize"><i class="iconfont icon-win_minimize"></i></li>
+          <li @click="maximize" class="nav-item"><i class="iconfont icon-win_maximize"></i></li>
+          <li @click="close" class="nav-item window-toolbar-close" v-if="closable" title="关闭"><i class="iconfont icon-close"></i></li>
+        </ul>
+      </header>
     </slot>
     <div class="window-body"><slot></slot></div>
-    <div class="window-footer"><slot name="footer"></slot></div>
-  </div>
+    <footer class="window-footer"><slot name="footer"></slot></footer>
+  </section>
 </template>

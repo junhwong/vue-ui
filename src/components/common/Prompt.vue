@@ -13,14 +13,14 @@
 //   el.removeEventListener(eventType, handler)
 // }
 import Modal from '../modal/Modal'
-import XButton from '../button/Button'
+import Btn from '../button/Button'
 export default {
-  name: 'toast',
-  components: {Modal, XButton},
+  name: 'prompt',
+  components: {Modal, Btn},
   data () {
     return {
       title: '',
-      message: 'hello toast',
+      message: 'hello prompt',
       display: false,
       onDecide: null,
       onCancel: null
@@ -56,13 +56,22 @@ export default {
   },
   destroyed () {
 
+  },
+  watch: {
+    display (val) {
+      if (val) {
+        this.$refs.modal.show()
+      } else {
+        this.$refs.modal.hide()
+      }
+    }
   }
 }
 </script>
 <template>
-  <modal class="toast" ref="toast" :shown="display" :title="title" >
+  <modal class="prompt" ref="modal" :title="title" >
     {{message}}
     <!--<x-button slot="footer" class="btn mh5" type="button" @click="handleClick($event, 'CANCEL')" vv-if="toast.type === 'YES_OR_NO'">取消</x-button>-->
-    <x-button slot="footer" class="btn-primary" type="button" @click="handleClick($event, 'OK')">确定</x-button>
+    <btn slot="footer" class="btn-primary" type="button" @click="handleClick($event, 'OK')">确定</btn>
   </modal>
 </template>

@@ -61,6 +61,7 @@
     padding: 5px;
     border: 1px solid #FFB399;
     background-color: #FFFECB;
+    color: red;
     margin-bottom: 15px;
   }
 }
@@ -84,4 +85,69 @@
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
   }
+}
+
+
+.editor {
+  // width: 100%;
+  border: 1px solid #c9d8db;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+
+  &-toolbar {
+    border-bottom: 1px solid #eee;
+
+    ul,
+    li,
+    i {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-style: normal;
+    }
+
+    .toolbar-item {
+      display: inline-block;
+      width: 46px;
+      height: 40px;
+      outline: none;
+      color: #333333;
+      font-size: 15px;
+      line-height: 40px;
+      vertical-align: middle;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        span {
+          opacity: 1;
+        }
+      }
+
+      &-title span {
+        opacity: 0.6;
+
+        &::before {
+          content: "H";
+          font-size: 19px;
+          font-weight: bold;
+          font-family: 'Times New Roman';
+        }
+      }
+    }
+  }
+}
+
+.editor-body {
+  padding: 22px 15px 40px;
+  min-height: 300px;
+  outline: none;
+  cursor: text;
+  position: relative;
+  // z-index: 1;
+  background: transparent;
+}
+
+.editor-control {
+  width: 100%;
 }
